@@ -1,8 +1,77 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #070808;
+  --grid-major: rgba(255, 255, 255, 0.085);
+  --grid-minor: rgba(255, 255, 255, 0.035);
+  --grid-accent: rgba(94, 234, 212, 0.08);
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--background);
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.blueprint-background {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    #121212;
+  background-size:
+  84px 84px,
+  84px 84px,
+  auto;
+}
+
+.blueprint-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.16) 1px, transparent 0.5px);
+  background-size: 84px 84px;
+  background-position: 3px 3px;
+  opacity: 0.45;
+}
+
+.blueprint-ruler {
+  position: absolute;
+  height: 42px;
+  opacity: 0.42;
+  background:
+    linear-gradient(to right, transparent, rgba(255, 255, 255, 0.14), transparent) bottom / 100% 1px no-repeat,
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent 10px,
+      rgba(255, 255, 255, 0.14) 10px,
+      rgba(255, 255, 255, 0.14) 11px,
+      transparent 11px,
+      transparent 12px
+    ) bottom / 100% 16px no-repeat;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.blueprint-ruler::after {
+  content: "";
+  position: absolute;
+  left: 49.9%;
+  bottom: 0;
+  width: 2px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
 }
 
 @theme inline {
