@@ -1,7 +1,11 @@
+import PersonnelCard from "@/components/PersonnelCard";
+
 export default function Home() {
   return (
     <main className="blueprint-background relative min-h-screen overflow-hidden">
-      <section className="blueprint-ruler absolute bottom-25 left-0 h-16 w-full pointer-events-none" />
+      <PersonnelCard />
+
+      <section className="blueprint-ruler pointer-events-none absolute bottom-8 left-0 h-16 w-full" />
     </main>
   );
 }

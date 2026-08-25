@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #070808;
-  --grid-major: rgba(255, 255, 255, 0.085);
-  --grid-minor: rgba(255, 255, 255, 0.035);
-  --grid-accent: rgba(94, 234, 212, 0.08);
+  --grid-size: 64px;
+  --grid-line: rgba(255, 255, 255, 0.055);
+  --grid-edge-shadow: rgba(0, 0, 0, 0.18);
+  --background: #1c1c1c;
 }
 
 html,
@@ -25,13 +25,13 @@ body {
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(var(--grid-major) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
-    #121212;
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    var(--background);
   background-size:
-  84px 84px,
-  84px 84px,
-  auto;
+    var(--grid-size) var(--grid-size),
+    var(--grid-size) var(--grid-size),
+    auto;
 }
 
 .blueprint-background::before {
@@ -40,9 +40,26 @@ body {
   inset: 0;
   pointer-events: none;
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.16) 1px, transparent 0.5px);
-  background-size: 84px 84px;
-  background-position: 3px 3px;
-  opacity: 0.45;
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: 1px 1px;
+  opacity: 0.28;
+}
+
+.blueprint-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size:
+    var(--grid-size) var(--grid-size),
+    var(--grid-size) var(--grid-size);
+  background-position:
+    32px 32px,
+    32px 32px;
+  opacity: 0.28;
 }
 
 .blueprint-ruler {
@@ -74,6 +91,31 @@ body {
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
 }
 
+.portfolio-id-card {
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  background: rgba(0, 0, 0, 0.48);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  padding: 18px;
+}
+
+.hud-hex {
+  width: 22px;
+  height: 22px;
+  display: block;
+  border: 2px solid rgba(255, 255, 255, 0.74);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+@media (max-width: 720px) {
+  .portfolio-id-card {
+    left: 20px;
+    right: 20px;
+    top: 20px;
+    width: auto;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -83,7 +125,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #111111;
     --foreground: #ededed;
   }
 }
