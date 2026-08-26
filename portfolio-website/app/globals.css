@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --grid-size: 64px;
+  --grid-size: 76px;
   --grid-line: rgba(255, 255, 255, 0.055);
   --grid-edge-shadow: rgba(0, 0, 0, 0.18);
-  --background: #1c1c1c;
+  --background: #151515;
 }
 
 html,
 body {
   min-height: 100%;
-  background: var(--background);
+  background: rgba(0, 0, 0, 0.924);
 }
 
 body {
@@ -32,34 +32,6 @@ body {
     var(--grid-size) var(--grid-size),
     var(--grid-size) var(--grid-size),
     auto;
-}
-
-.blueprint-background::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.16) 1px, transparent 0.5px);
-  background-size: var(--grid-size) var(--grid-size);
-  background-position: 1px 1px;
-  opacity: 0.28;
-}
-
-.blueprint-background::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: 
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size:
-    var(--grid-size) var(--grid-size),
-    var(--grid-size) var(--grid-size);
-  background-position:
-    32px 32px,
-    32px 32px;
-  opacity: 0.28;
 }
 
 .blueprint-ruler {
@@ -91,20 +63,134 @@ body {
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
 }
 
-.portfolio-id-card {
-  border: 1px solid rgba(255, 255, 255, 0.68);
-  background: rgba(0, 0, 0, 0.48);
-  box-shadow: 0 0 24px rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(8px);
-  padding: 18px;
+.blueprint-nav {
+  position: fixed;
+  left: 154px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-geist-mono), "Courier New", monospace;
 }
 
-.hud-hex {
-  width: 22px;
-  height: 22px;
-  display: block;
-  border: 2px solid rgba(255, 255, 255, 0.74);
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+.J-nav__name {
+  place-items: center;
+  width: 76px;
+  height: 77px;
+  position: fixed;
+  left: 77px;
+  display: grid;
+  cursor: pointer;
+  border: 1px solid #4b4a4a;
+  background: transparent;
+  color: white;
+  background: transparent;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 24px;
+}
+
+.blueprint-nav__name {
+  display: grid;
+  width: 152px;
+  height: 77px;
+  cursor: pointer;
+  place-items: center;
+  border: 1px solid #4b4a4a;
+  background: transparent;
+  color: white;
+  font-family: "Sekuya", system-ui;
+  font-size: 28px;
+  text-decoration: none;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.blueprint-nav__name:hover,
+.blueprint-nav__name:focus-visible {
+  outline: none;
+}
+.blueprint-nav__menu {
+  display: flex;
+  max-width: 0;
+  gap: 4px;
+  overflow: hidden;
+  transform: translateX(-8px);
+  border: 1px solid transparent;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    max-width 280ms ease,
+    opacity 200ms ease,
+    transform 280ms ease,
+    border-color 200ms ease;
+}
+
+.blueprint-nav:hover .blueprint-nav__menu,
+.blueprint-nav:focus-within .blueprint-nav__menu {
+  max-width: 860px;
+  transform: translateX(0);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: transparent;
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.blueprint-nav__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 77px;
+  width: 145.5px;
+  color: rgba(255, 255, 255, 0.543);
+  font-size: 16px;
+  font-weight: 400;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.blueprint-nav__link:hover,
+.blueprint-nav__link:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+}
+
+
+@media (max-width: 720px) {
+  .blueprint-nav {
+    top: 12px;
+    right: 12px;
+  }
+
+  .blueprint-nav__name {
+    width: 100px;
+    height: 56px;
+    font-size: 24px;
+  }
+
+  .blueprint-nav__link {
+    padding: 10px 8px;
+    font-size: 11px;
+  }
+}
+
+@media (hover: none) {
+  .blueprint-nav__menu {
+    max-width: 460px;
+    transform: translateX(0);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(8, 8, 8, 0.75);
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
 }
 
 @media (max-width: 720px) {
@@ -125,7 +211,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #111111;
+    --background: #151515;
     --foreground: #ededed;
   }
 }
@@ -133,5 +219,4 @@ body {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
