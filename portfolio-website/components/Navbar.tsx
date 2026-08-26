@@ -9,37 +9,49 @@ const navItems = [
 
 export default function Navbar() {
   return (
-    <header className="blueprint-nav">
-      <Link 
-        href="/"
-        className="J-nav__name"
-        aria-label="Go to home"
-      >
-        JG
-      </Link>
+    <>
+      <header className="blueprint-nav">
+        <Link 
+          href="/"
+          className="J-nav__name"
+          aria-label="Go to home"
+        >
+          JG
+        </Link>
 
-      <Link
-        href="/"
-        className="blueprint-nav__name"
-        aria-label="Go to home"
-      >
-        I3oo
-      </Link>
+        <Link
+          href="/"
+          className="blueprint-nav__name"
+          aria-label="Go to home"
+        >
+          <span className="B-nav">I3</span>
+          <span>oo</span>
+        </Link>
 
-      <nav
-        className="blueprint-nav__menu"
-        aria-label="Primary navigation"
+        <nav
+          className="blueprint-nav__menu"
+          aria-label="Primary navigation"
+        >
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="blueprint-nav__link"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      </header>
+
+      <button
+        type="button"
+        className="am-pm-button"
+        aria-label="Switch time display"
       >
-        {navItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="blueprint-nav__link"
-          >
-            {item.label}
-          </Link>
-        ))}
-      </nav>
-    </header>
+        <span className="am-pm-default">PM</span>
+        <span className="am-pm-hover">AM</span>
+      </button>
+    </>
   );
 }
