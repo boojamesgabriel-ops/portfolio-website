@@ -21,6 +21,10 @@ body {
   box-sizing: border-box;
 }
 
+.custom-font {
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
 .blueprint-background {
   position: relative;
   overflow: hidden;
@@ -224,8 +228,8 @@ body {
 
 .rubiks-loop-position {
   position: relative;
-  left: 36%;
   z-index: 10;
+  left: 0.6%;
   display: flex;
   align-items: center;
   min-height: 100vh;
@@ -266,7 +270,7 @@ body {
 }
 
 .rubiks-player {
-  display: block;
+  display: grid;
   width: 100%;
   height: 100%;
   filter:
@@ -288,12 +292,6 @@ body {
       contrast(1.2);
   }
 }
-
-
-
-
-
-
 
 @media (hover: none) {
   .blueprint-nav__menu {
