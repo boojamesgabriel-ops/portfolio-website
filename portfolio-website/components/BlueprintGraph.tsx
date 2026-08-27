@@ -88,7 +88,9 @@ export default function BlueprintGraph() {
       },
     );
 
-    return () => animation.kill();
+    return () => {
+      animation.kill();
+    };
   }, []);
 
   return (
