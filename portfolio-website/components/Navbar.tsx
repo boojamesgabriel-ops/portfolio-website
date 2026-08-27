@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const navItems = [
-  { label: "about", href: "#about" },
   { label: "projects", href: "#projects" },
   { label: "services", href: "#services" },
+  { label: "about", href: "#about" },
   { label: "contact", href: "#contact" },
 ];
 
@@ -42,16 +42,16 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
-      </header>
 
-      <button
-        type="button"
-        className="am-pm-button"
-        aria-label="Switch time display"
-      >
-        <span className="am-pm-default">PM</span>
-        <span className="am-pm-hover">AM</span>
-      </button>
+        <button
+          type="button"
+          className="am-pm-button"
+          aria-label="Switch time display"
+        >
+          <span className="am-pm-default">PM</span>
+          <span className="am-pm-hover">AM</span>
+        </button>
+      </header>
     </>
   );
 }

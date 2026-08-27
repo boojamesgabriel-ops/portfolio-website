@@ -7,6 +7,24 @@
   --background: #151515;
 }
 
+@media (max-width: 767px) {
+  :root {
+    --grid-size: 52px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --grid-size: 64px;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --grid-size: 76px;
+  }
+}
+
 html,
 body {
   min-height: 100%;
@@ -27,7 +45,7 @@ body {
 
 .blueprint-background {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   background:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
@@ -69,6 +87,7 @@ body {
 
 .blueprint-nav {
   position: fixed;
+  top: 0;
   left: 154px;
   z-index: 50;
   display: flex;
@@ -78,6 +97,7 @@ body {
 }
 
 .am-pm-button {
+  display: grid;
   place-items: center;
   width: 76px;
   height: 77px;
@@ -207,40 +227,141 @@ body {
 }
 
 
-@media (max-width: 720px) {
+@media (max-width: 1199px) {
   .blueprint-nav {
     top: 12px;
-    right: 12px;
+    left: 50%;
+    right: auto;
+    gap: 0;
+    transform: translateX(-50%);
+  }
+
+  .J-nav__name,
+  .am-pm-button {
+    position: static;
+    width: 48px;
+    height: 48px;
+    font-size: 14px;
   }
 
   .blueprint-nav__name {
-    width: 100px;
-    height: 56px;
-    font-size: 24px;
+    width: 112px;
+    height: 48px;
+    font-size: 18px;
   }
 
-  .blueprint-nav__link {
-    padding: 10px 8px;
-    font-size: 11px;
+  .blueprint-nav__menu {
+    display: none;
   }
+}
+
+.hero-layout {
+  display: grid;
+  min-height: 100svh;
+  grid-template-columns:
+      minmax(112px, 1fr)
+      minmax(70px, 0.5fr)
+      minmax(112px, 1fr);
+  align-items: stretch;
+  gap: 0;
+  padding: 72px 10px 18px;
+}
+
+.hero-column {
+  display: grid;
+  min-width: 0;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 6px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.hero-meta > :first-child,
+.hero-detail b {
+  color: rgba(255, 255, 255, 0.42);
+  font-weight: 400;
+}
+
+.hero-meta--right {
+  justify-content: flex-end;
+}
+
+.hero-statement {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 200;
+  line-height: 1.15;
+}
+
+.hero-statement > :first-child {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-statement > :last-child {
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.hero-statement--left {
+  align-items: flex-end;
+}
+
+.hero-statement--right {
+  align-items: flex-start;
+}
+
+.hero-detail {
+  display: flex;
+  width: 120px;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 6.5px;
+  font-weight: 500;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.hero-detail--right {
+  align-items: flex-end;
+  justify-self: end;
+  text-align: right;
+}
+
+.hero-detail__secondary {
+  padding-inline: 4px;
 }
 
 
 .rubiks-loop-position {
   position: relative;
   z-index: 10;
-  left: 0.6%;
   display: flex;
+  width: 100%;
+  max-width: 238px;
+  flex-shrink: 0;
   align-items: center;
-  min-height: 100vh;
+  align-self: center;
+  justify-content: center;
+  justify-self: center;
 }
 
 .rubiks-shell {
-  width: min(460px, 90vw);
-  aspect-ratio: 1;
   position: relative;
-
-  padding: 30px 2px 30px 30px;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 50px;
 }
 
 /* top-left corner */
@@ -248,8 +369,8 @@ body {
 .rubiks-shell::after {
   content: "";
   position: absolute;
-  width: 155px;   /* corner line length */
-  height: 155px;
+  width: 55px;
+  height: 55px;
   border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
@@ -279,9 +400,180 @@ body {
     brightness(0.9);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 767px) {
+  .hero-layout {
+    min-height: 100svh;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "solving solving"
+      "meta-left meta-right"
+      "cube cube"
+      "detail-left detail-right"
+      "efficient efficient";
+    grid-template-rows: auto auto auto auto auto;
+    align-content: center;
+    column-gap: 8px;
+    row-gap: 12px;
+    padding: 88px 16px 28px;
+  }
+
+  .hero-statement {
+    visibility: visible;
+    gap: 3px;
+    font-size: 28px;
+  }
+
+  .hero-column {
+    display: contents;
+  }
+
+  .hero-meta {
+    gap: 3px;
+    font-size: 12px;
+  }
+
+  .hero-meta--left {
+    grid-area: meta-left;
+    justify-content: flex-end;
+  }
+
+  .hero-meta--right {
+    grid-area: meta-right;
+    justify-content: flex-start;
+  }
+
+  .hero-statement--left {
+    grid-area: solving;
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+  }
+
+  .hero-statement--right {
+    grid-area: efficient;
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+  }
+
+  .hero-detail {
+    width: 140px;
+    font-size: 10px;
+    line-height: 1.45;
+    gap: 4px;
+  }
+
+  .hero-detail--left {
+    grid-area: detail-left;
+    justify-self: end;
+    text-align: right;
+  }
+
+  .hero-detail--right {
+    grid-area: detail-right;
+    align-items: flex-start;
+    justify-self: start;
+    text-align: left;
+  }
+
+  .rubiks-loop-position {
+    grid-area: cube;
+    width: min(300px, 68vw);
+    max-width: none;
+  }
+
   .rubiks-shell {
-    width: min(380px, 92vw);
+    padding: 20px;
+  }
+
+  .rubiks-shell::before,
+  .rubiks-shell::after {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-layout {
+    grid-template-columns:
+      minmax(150px, 1fr)
+      minmax(300px, 1.5fr)
+      minmax(150px, 1fr);
+    gap: 16px;
+    padding: 84px 32px 28px;
+  }
+
+  .hero-meta {
+    gap: 10px;
+    font-size: 11px;
+  }
+
+  .hero-statement {
+    gap: 10px;
+    font-size: 30px;
+  }
+
+  .hero-detail {
+    width: auto;
+    font-size: 10px;
+  }
+
+  .rubiks-loop-position {
+    max-width: 240px;
+  }
+
+  .rubiks-shell {
+    padding: 20px;
+  }
+
+  .rubiks-shell::before,
+  .rubiks-shell::after {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-layout {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(300px, 460px)
+      minmax(0, 1fr);
+    gap: 48px;
+    padding: 96px 64px 40px;
+  }
+
+  .hero-meta {
+    gap: 20px;
+    font-size: 15px;
+  }
+
+  .hero-statement {
+    gap: 20px;
+    font-size: 48px;
+  }
+
+  .hero-detail {
+    gap: 4px;
+    font-size: 15px;
+  }
+
+  .hero-detail__secondary {
+    padding-inline: 44px;
+  }
+
+  .rubiks-loop-position {
+    max-width: 460px;
+  }
+
+  .rubiks-shell {
+    padding: 30px;
+  }
+
+  .rubiks-shell::before,
+  .rubiks-shell::after {
+    width: 155px;
+    height: 155px;
   }
 }
 
@@ -293,7 +585,7 @@ body {
   }
 }
 
-@media (hover: none) {
+@media (hover: none) and (min-width: 1200px) {
   .blueprint-nav__menu {
     max-width: 460px;
     transform: translateX(0);

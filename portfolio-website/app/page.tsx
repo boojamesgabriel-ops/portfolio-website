@@ -3,56 +3,51 @@ import RubiksLoop from "../components/RubiksLoop";
 
 export default function Home() {
   return (
-    <main className="blueprint-background relative min-h-screen overflow-hidden">
+    <main className="blueprint-background relative min-h-svh overflow-x-hidden">
       <Navbar />
 
-      <section className="flex items-center justify-center gap-32">
-        <div className="flex flex-col gap-35">
-          <div className="flex items-center gap-5 text-[15px]">
-            <span className="text-white/50">01.</span>
-            <span className="text-white/60 custom-font font-medium">SOFTWARE ENGINEER</span>
-          </div>
-          <div className="flex flex-col items-end justify-center text-5xl gap-5">
-            <span className="custom-font font-[200] text-white/80">SOLVING</span>
-            <span className="custom-font font-[200] text-white/50">PROBLEMS</span>
+      <section className="hero-layout">
+        <div className="hero-column hero-column--left">
+          <div className="hero-meta hero-meta--left">
+            <span>01.</span>
+            <span>SOFTWARE ENGINEER</span>
           </div>
 
-          <div className="flex flex-col items-start gap-1 text-[15px]">
-            <div className="text-white/60 custom-font ml-11">
-              <span>T: +63 9196165238</span>
-            </div>
-            <div className="flex items-center gap-5">
-              <span className="text-white/50">03.</span>
-              <span className="text-white/60 custom-font font-medium"> M: BOOJAMESGABRIEL@GMAIL.COM</span>
-            </div>
+          <div className="hero-statement hero-statement--left">
+            <span>SOLVING</span>
+            <span>PROBLEMS</span>
+          </div>
+
+          <div className="hero-detail hero-detail--left">
+            <span className="hero-detail__secondary">T: +63 9196165238</span>
+            <span><b>03.</b> M: BOOJAMESGABRIEL@GMAIL.COM</span>
           </div>
         </div>
-        
+
         <div className="rubiks-loop-position">
           <RubiksLoop />
         </div>
 
-        <div className="flex items-end flex-col gap-35">
-          <div className="flex gap-5 text-[15px]">
-            <span className="text-white/50">02.</span>
-            <span className="text-white/60 custom-font font-medium">PHILIPPINES BASED</span>
+        <div className="hero-column hero-column--right">
+          <div className="hero-meta hero-meta--right">
+            <span>02.</span>
+            <span>PHILIPPINES BASED</span>
           </div>
 
-          <div className="flex flex-col justify-center self-start text-5xl gap-5">
-            <span className="custom-font font-[200] text-white/80">EFFICIENT</span>
-            <span className="custom-font font-[200] text-white/50">SOLUTIONS</span>
+          <div className="hero-statement hero-statement--right">
+            <span>EFFICIENT</span>
+            <span>SOLUTION</span>
           </div>
 
-          <div className="flex flex-col items-end gap-1 text-[15px]">
-            <div className="text-white/60 custom-font ml-11">
-              <span>FLYRANK AI</span>
-            </div>
-            <div className="flex gap-5 text-[15px]">
-              <span className="text-white/50">04.</span>
-              <span className="text-white/60 custom-font font-medium">FRONTEND AI ENGINEER INTERN </span>
-            </div>
+          <div className="hero-detail hero-detail--right">
+            <span className="hero-detail__secondary">FLYRANK AI</span>
+            <span><b>04.</b> FRONTEND AI ENGINEER INTERN</span>
           </div>
         </div>
+      </section>
+
+      <section id="projects" className="projects-section">
+        
       </section>
     </main>
   );

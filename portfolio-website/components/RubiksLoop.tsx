@@ -42,6 +42,8 @@ export default function RubiksLoop() {
         alg: cycleAlgorithm,
         background: "none",
         controlPanel: "none",
+        hintFacelets: "none",
+        cameraDistance: 5.2,
       });
 
       player = createdPlayer;
