@@ -1,0 +1,182 @@
+"use client";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
+
+export default function ScrollExperience() {
+  const progressRef = useRef<HTMLSpanElement>(null);
+  const sectionLabelRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const progress = progressRef.current;
+    const sectionLabel = sectionLabelRef.current;
+
+    if (!progress || !sectionLabel) {
+      return;
+    }
+
+    let refreshTimer: number | undefined;
+
+    const refreshScrollMeasurements = () => {
+      if (refreshTimer !== undefined) {
+        window.clearTimeout(refreshTimer);
+      }
+
+      refreshTimer = window.setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 260);
+    };
+
+    window.addEventListener("resize", refreshScrollMeasurements);
+
+    const context = gsap.context(() => {
+      gsap.set(progress, { scaleX: 0, transformOrigin: "left center" });
+
+      gsap.to(progress, {
+        scaleX: 1,
+        ease: "none",
+        scrollTrigger: {
+          start: 0,
+          end: "max",
+          scrub: 0.15,
+        },
+      });
+
+      ScrollTrigger.create({
+        trigger: ".projects-section",
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => {
+          sectionLabel.textContent = "05 / PROJECT ARCHIVE";
+        },
+        onEnterBack: () => {
+          sectionLabel.textContent = "05 / PROJECT ARCHIVE";
+        },
+        onLeaveBack: () => {
+          sectionLabel.textContent = "01 / HOME";
+        },
+      });
+
+      const motion = gsap.matchMedia();
+
+      motion.add(
+        "(min-width: 900px) and (prefers-reduced-motion: no-preference)",
+        () => {
+          const heroTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: ".hero-layout",
+              start: "top top",
+              end: "+=70%",
+              pin: true,
+              scrub: 0.8,
+            },
+          });
+
+          heroTimeline
+            .to(
+              ".rubiks-loop-position",
+              {
+                yPercent: -28,
+                scale: 0.72,
+                opacity: 0.28,
+                ease: "none",
+              },
+              0,
+            )
+            .to(
+              ".hero-column--left",
+              { xPercent: -10, opacity: 0.2, ease: "none" },
+              0,
+            )
+            .to(
+              ".hero-column--right",
+              { xPercent: 10, opacity: 0.2, ease: "none" },
+              0,
+            );
+        },
+      );
+
+      motion.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: ".projects-section",
+              start: "top 82%",
+              end: "top 30%",
+              scrub: 0.5,
+            },
+          })
+          .fromTo(
+            ".projects-entry-signal__line",
+            { scaleY: 0 },
+            { scaleY: 1, transformOrigin: "top center", ease: "none" },
+          )
+          .fromTo(
+            ".projects-entry-signal__label",
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, ease: "none" },
+            0.35,
+          );
+
+        gsap.fromTo(
+          ".projects-title-line > span",
+          { yPercent: 112 },
+          {
+            yPercent: 0,
+            stagger: 0.08,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".projects-copy",
+              start: "top 78%",
+              end: "top 40%",
+              scrub: 0.55,
+            },
+          },
+        );
+
+        gsap.fromTo(
+          [".projects-index", ".projects-status"],
+          { opacity: 0, x: -18 },
+          {
+            opacity: 1,
+            x: 0,
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: ".projects-copy",
+              start: "top 80%",
+              end: "top 48%",
+              scrub: 0.5,
+            },
+          },
+        );
+      });
+
+      return () => motion.revert();
+    });
+
+    return () => {
+      window.removeEventListener("resize", refreshScrollMeasurements);
+
+      if (refreshTimer !== undefined) {
+        window.clearTimeout(refreshTimer);
+      }
+
+      context.revert();
+    };
+  }, []);
+
+  return (
+    <div className="scroll-ruler" aria-hidden="true">
+      <span ref={sectionLabelRef} className="scroll-ruler__label">
+        01 / HOME
+      </span>
+      <span className="scroll-ruler__track">
+        <span ref={progressRef} className="scroll-ruler__progress" />
+      </span>
+      <span className="scroll-ruler__end">SCROLL</span>
+    </div>
+  );
+}

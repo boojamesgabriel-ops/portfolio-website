@@ -1,9 +1,12 @@
 import Navbar from "@/components/Navbar";
 import RubiksLoop from "../components/RubiksLoop";
+import ConstructionCity from "@/components/ConstructionCity";
+import ScrollExperience from "@/components/ScrollExperience";
 
 export default function Home() {
   return (
     <main className="blueprint-background relative min-h-svh overflow-x-hidden">
+      <ScrollExperience />
       <Navbar />
 
       <section className="hero-layout">
@@ -35,8 +38,8 @@ export default function Home() {
           </div>
 
           <div className="hero-statement hero-statement--right">
-            <span>EFFICIENT</span>
-            <span>SOLUTION</span>
+            <span>CREATIVE</span>
+            <span>SOLUTIONS</span>
           </div>
 
           <div className="hero-detail hero-detail--right">
@@ -46,8 +49,37 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="projects-section">
+      <section
+        id="projects"
+        className="projects-section"
+        aria-labelledby="projects-title"
+      >
+        <div className="projects-entry-signal" aria-hidden="true">
+          <span className="projects-entry-signal__line" />
+          <span className="projects-entry-signal__label">PROJECTS</span>
+        </div>
+
+        <div className="projects-copy">
+          <span className="projects-index">05. PROJECT ARCHIVE</span>
+
+          <h2 id="projects-title" className="projects-title">
+            <span className="projects-title-line">
+              <span>Projects are</span>
+            </span>
+            <span className="projects-title-line">
+              <span>still under</span>
+            </span>
+            <span className="projects-title-line">
+              <span>development.</span>
+            </span>
+          </h2>
+
+          <span className="projects-status">CURRENTLY BUILDING</span>
+        </div>
         
+        <div className="projects-city-slot">
+          <ConstructionCity />
+        </div>
       </section>
     </main>
   );
