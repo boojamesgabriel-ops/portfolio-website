@@ -5,6 +5,231 @@
   --grid-line: rgba(255, 255, 255, 0.055);
   --grid-edge-shadow: rgba(0, 0, 0, 0.18);
   --background: #151515;
+  --nav-edge-offset: var(--grid-size);
+}
+
+@media (max-width: 899px) {
+  .about-section {
+    padding: 84px 16px 48px;
+    color: rgba(255, 255, 255, 0.82);
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+
+  .about-header-wrapper {
+    display: grid;
+    gap: 12px;
+  }
+
+  .about-title-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 14px;
+    border: 1px solid rgba(213, 220, 223, 0.32);
+  }
+
+  .about-title-line {
+    font-size: 32px;
+  }
+
+  .about-subheader-line {
+    color: rgba(213, 220, 223, 0.62);
+    font-size: 12px;
+  }
+
+  .connect-experiences-container {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+  }
+
+  .touch-link,
+  .experiences-achievements-link {
+    display: flex;
+    min-height: 62px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border: 1px solid rgba(213, 220, 223, 0.32);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.82);
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.3;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .experiences-achievements-link {
+    flex-direction: column;
+    border-left: 0;
+  }
+
+  .about-middle-section-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "biography"
+      "portrait"
+      "github"
+      "tools";
+    margin-top: 12px;
+    border: 1px solid rgba(213, 220, 223, 0.32);
+  }
+
+  .about-strip-heading {
+    font-family: var(--font-geist-mono), "Courier New", monospace;
+  }
+
+  .about-biography {
+    grid-area: biography;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding: 28px 20px;
+    border-bottom: 1px solid rgba(213, 220, 223, 0.22);
+    background: transparent;
+  }
+
+  .about-biography h3 {
+    max-width: 25ch;
+    margin: 0 0 18px;
+    color: rgba(255, 255, 255, 0.91);
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .about-biography p {
+    max-width: 64ch;
+    margin: 0 0 12px;
+    color: rgba(213, 220, 223, 0.64);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .about-portrait {
+    grid-area: portrait;
+    position: relative;
+    display: grid;
+    min-width: 0;
+    min-height: 390px;
+    place-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(213, 220, 223, 0.22);
+    background:
+      linear-gradient(rgba(213, 220, 223, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(213, 220, 223, 0.08) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  .about-portrait__image {
+    z-index: 0;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .about-github-panel,
+  .about-tools-panel {
+    min-width: 0;
+    overflow: hidden;
+    padding: 14px;
+  }
+
+  .about-github-panel {
+    grid-area: github;
+    min-height: calc(var(--grid-size) * 2);
+    border-bottom: 1px solid rgba(213, 220, 223, 0.22);
+  }
+
+  .about-tools-panel {
+    grid-area: tools;
+    display: flex;
+    min-height: calc(var(--grid-size) * 2);
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about-strip-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: rgba(213, 220, 223, 0.5);
+    font-size: 8px;
+    white-space: nowrap;
+  }
+
+  .about-github-panel .about-strip-heading span:last-child {
+    color: #26a641;
+  }
+
+  .github-contribution-grid {
+    display: grid;
+    grid-template-rows: repeat(7, 7px);
+    grid-auto-flow: column;
+    grid-auto-columns: 7px;
+    gap: 3px;
+    max-width: 100%;
+    overflow-x: auto;
+    margin-top: 12px;
+    scrollbar-width: thin;
+  }
+
+  .github-contribution-grid span {
+    width: 7px;
+    aspect-ratio: 1;
+    border: 1px solid #26a641;
+    background: #26a641;
+  }
+
+  .github-contribution-total {
+    display: block;
+    margin-top: 8px;
+    color: #26a641;
+    font-family: var(--font-geist-mono), "Courier New", monospace;
+    font-size: 8px;
+  }
+
+  .about-tools-marquee {
+    margin-top: 13px;
+    overflow: hidden;
+  }
+
+  .about-tools-track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    animation: about-tools-scroll 42s linear infinite;
+  }
+
+  .about-tool-logo {
+    display: grid;
+    width: 44px;
+    height: 36px;
+    flex: 0 0 44px;
+    place-items: center;
+    border-right: 1px solid rgba(213, 220, 223, 0.2);
+    color: rgba(213, 220, 223, 0.52);
+  }
+
+  .about-tool-logo svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .about-tool-logo:hover {
+    color: rgba(238, 241, 242, 0.82);
+  }
+
+  @keyframes about-tools-scroll {
+    from {
+      transform: translateX(-50%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
 }
 
 @media (max-width: 767px) {
@@ -130,21 +355,21 @@ body {
 .blueprint-nav {
   position: fixed;
   top: 0;
-  left: 154px;
+  left: calc(var(--grid-size) * 2);
   z-index: 50;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0;
   font-family: var(--font-geist-mono), "Courier New", monospace;
 }
 
 .am-pm-button {
   display: grid;
   place-items: center;
-  width: 76px;
-  height: 77px;
+  width: var(--grid-size);
+  height: var(--grid-size);
   position: fixed;
-  right: 102px;
+  right: var(--nav-edge-offset);
   cursor: pointer;
   border: 1px solid #4b4a4a;
   background: transparent;
@@ -175,10 +400,10 @@ body {
 
 .J-nav__name {
   place-items: center;
-  width: 76px;
-  height: 77px;
+  width: var(--grid-size);
+  height: var(--grid-size);
   position: fixed;
-  left: 77px;
+  left: var(--grid-size);
   display: grid;
   cursor: pointer;
   border: 1px solid #4b4a4a;
@@ -197,8 +422,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
-  height: 77px;
+  width: calc(var(--grid-size) * 2);
+  height: var(--grid-size);
   cursor: pointer;
   place-items: center;
   border: 1px solid #4b4a4a;
@@ -220,7 +445,7 @@ body {
 .blueprint-nav__menu {
   display: flex;
   max-width: 0;
-  gap: 4px;
+  gap: 0;
   overflow: hidden;
   transform: translateX(-8px);
   border: 1px solid transparent;
@@ -249,8 +474,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 77px;
-  width: 145.5px;
+  height: var(--grid-size);
+  width: calc(var(--grid-size) * 2);
   color: rgba(255, 255, 255, 0.543);
   font-size: 16px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
@@ -567,6 +792,7 @@ body:has(.cube-render-page) {
   }
 }
 
+/* tablet and up */
 @media (min-width: 768px) {
   .hero-layout {
     grid-template-columns:
@@ -607,6 +833,7 @@ body:has(.cube-render-page) {
   }
 }
 
+/* large desktop */
 @media (min-width: 1200px) {
   .hero-layout {
     grid-template-columns:
@@ -832,6 +1059,7 @@ body:has(.cube-render-page) {
   }
 }
 
+/* desktop layout */
 @media (min-width: 900px) {
   .projects-section {
     grid-template-columns: minmax(280px, 0.8fr) minmax(440px, 1.2fr);
@@ -853,13 +1081,262 @@ body:has(.cube-render-page) {
   }
 
   .construction-city-3d {
-    height: min(72svh, 560px);
+    height: min(100svh, 560px);
   }
 
   .construction-city-3d::before,
   .construction-city-3d::after {
     width: 64px;
     height: 64px;
+  }
+
+  .about-section {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--grid-size);
+    color: rgba(255, 255, 255, 0.82);
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+
+  .connect-experiences-container {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .about-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: calc(var(--grid-size) * 2) var(--nav-edge-offset) 0 var(--grid-size);
+  }
+
+  .about-title-container {
+    display: flex;
+    flex-direction: column;
+    width: calc(var(--grid-size) * 3);
+    gap: 2px;
+    line-height: 25px;
+    border: 1px solid rgba(213, 220, 223, 0.32);
+    padding: 15px 15px 5px 10px;
+    margin: 0;
+  }
+
+  .about-title-line {
+    font-size: 40px;
+  }
+
+  .about-subheader-line {
+    font-size: 12px;
+  }
+
+  .touch-link,
+  .experiences-achievements-link {
+    display: flex;
+    height: var(--grid-size);
+    min-height: 0;
+    align-items: center;
+    padding: 8px 16px;
+    font-size: 16px;
+    border: 1px solid rgba(213, 220, 223, 0.32);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.82);
+    font-family: inherit;
+    line-height: 1.35;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+
+  .touch-link {
+    justify-content: center;
+    width: calc(var(--grid-size) * 2);
+    margin: 0;
+  }
+
+  .touch-link:hover,
+  .experiences-achievements-link:hover {
+    background-color:rgba(154, 154, 154, 0.14);
+  }
+
+  .experiences-achievements-link {
+    flex-direction: column;
+    border-left: 0;
+    cursor: pointer;
+    justify-content: center;
+    width: calc(var(--grid-size) * 3);
+    margin: 0;
+  }
+
+  .about-middle-section-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) calc(var(--grid-size) * 5);
+    grid-template-rows: calc(var(--grid-size) * 5) calc(var(--grid-size) * 2);
+    grid-template-areas:
+      "biography portrait"
+      "tools github";
+    width: calc(100% - var(--grid-size) - var(--nav-edge-offset));
+    margin-left: var(--grid-size);
+    margin-right: var(--nav-edge-offset);
+    border: 0.5px solid rgba(213, 220, 223, 0.32);
+    overflow: hidden;
+  }
+
+  .about-strip-heading {
+    font-family: var(--font-geist-mono), "Courier New", monospace;
+  }
+
+  .about-biography {
+    grid-area: biography;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(24px, 3vw, 52px);
+    border-right: 1px solid rgba(213, 220, 223, 0.22);
+    border-bottom: 1px solid rgba(213, 220, 223, 0.22);
+    background: transparent;
+  }
+
+  .about-biography h3 {
+    max-width: 28ch;
+    margin: 0 0 20px;
+    color: rgba(255, 255, 255, 0.91);
+    font-size: clamp(40px, 2.1vw, 36px);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .about-biography p {
+    max-width: 64ch;
+    margin: 0 0 12px;
+    color: rgba(213, 220, 223, 0.64);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .about-portrait {
+    grid-area: portrait;
+    position: relative;
+    display: grid;
+    min-width: 0;
+    min-height: calc(var(--grid-size) * 5);
+    place-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(213, 220, 223, 0.22);
+    background:
+      linear-gradient(rgba(213, 220, 223, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(213, 220, 223, 0.08) 1px, transparent 1px);
+    background-size: calc(var(--grid-size) / 2) calc(var(--grid-size) / 2);
+  }
+
+  .about-portrait__image {
+    z-index: 0;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .about-github-panel,
+  .about-tools-panel {
+    min-width: 0;
+    overflow: hidden;
+    padding: 10px 14px;
+  }
+
+  .about-github-panel {
+    grid-area: github;
+    min-height: calc(var(--grid-size) * 2);
+  }
+
+  .about-tools-panel {
+    grid-area: tools;
+    display: flex;
+    min-height: calc(var(--grid-size) * 2);
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid rgba(213, 220, 223, 0.22);
+  }
+
+  .about-strip-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: rgba(213, 220, 223, 0.5);
+    font-size: 8px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .about-github-panel .about-strip-heading span:last-child {
+    color: #26a641;
+  }
+
+  .github-contribution-grid {
+    display: grid;
+    grid-template-rows: repeat(7, 9px);
+    grid-auto-flow: column;
+    grid-auto-columns: 9px;
+    gap: 3px;
+    max-width: 100%;
+    overflow-x: auto;
+    margin-top: 12px;
+    scrollbar-width: thin;
+  }
+
+  .github-contribution-grid span {
+    width: 9px;
+    aspect-ratio: 1;
+    border: 1px solid #26a641;
+    background: #26a641;
+  }
+
+  .github-contribution-total {
+    display: block;
+    margin-top: 8px;
+    color: #26a641;
+    font-family: var(--font-geist-mono), "Courier New", monospace;
+    font-size: 8px;
+  }
+
+  .about-tools-marquee {
+    position: relative;
+    margin-top: 13px;
+    overflow: hidden;
+  }
+
+  .about-tools-track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    animation: about-tools-scroll 42s linear infinite;
+  }
+
+  .about-tool-logo {
+    display: grid;
+    width: 52px;
+    height: 40px;
+    flex: 0 0 52px;
+    place-items: center;
+    border-right: 1px solid rgba(213, 220, 223, 0.2);
+    color: rgba(213, 220, 223, 0.52);
+    transition: color 180ms ease;
+  }
+
+  .about-tool-logo svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .about-tool-logo:hover {
+    color: rgba(238, 241, 242, 0.82);
+  }
+
+  @keyframes about-tools-scroll {
+    from {
+      transform: translateX(-50%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
   }
 
   @keyframes city-scan {
@@ -902,6 +1379,10 @@ body:has(.cube-render-page) {
 
   .projects-title-line > span {
     transform: none !important;
+  }
+
+  .about-tools-track {
+    animation: none;
   }
 }
 

@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import RubiksLoop from "../components/RubiksLoop";
 import ConstructionCity from "@/components/ConstructionCity";
 import ScrollExperience from "@/components/ScrollExperience";
+import AboutSection from "@/components/AboutSection";
 
 export default function Home() {
   return (
@@ -81,6 +82,8 @@ export default function Home() {
           <ConstructionCity />
         </div>
       </section>
+
+      <AboutSection />
     </main>
   );
 }
