@@ -50,13 +50,13 @@ export default function ScrollExperience() {
         start: "top center",
         end: "bottom center",
         onEnter: () => {
-          sectionLabel.textContent = "05 / PROJECT ARCHIVE";
+          sectionLabel.textContent = "PROJECT ARCHIVE";
         },
         onEnterBack: () => {
-          sectionLabel.textContent = "05 / PROJECT ARCHIVE";
+          sectionLabel.textContent = "PROJECT ARCHIVE";
         },
         onLeaveBack: () => {
-          sectionLabel.textContent = "01 / HOME";
+          sectionLabel.textContent = "HOME";
         },
       });
 
@@ -171,7 +171,7 @@ export default function ScrollExperience() {
   return (
     <div className="scroll-ruler" aria-hidden="true">
       <span ref={sectionLabelRef} className="scroll-ruler__label">
-        01 / HOME
+         HOME
       </span>
       <span className="scroll-ruler__track">
         <span ref={progressRef} className="scroll-ruler__progress" />

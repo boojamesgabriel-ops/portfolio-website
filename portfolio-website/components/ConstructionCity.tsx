@@ -55,11 +55,10 @@ export default function ConstructionCity() {
     const media = gsap.matchMedia();
 
     media.add("(min-width: 900px)", () => {
-      const trigger = ScrollTrigger.create({
+      const buildTrigger = ScrollTrigger.create({
         trigger: section,
-        start: "top top",
-        end: () => `+=${Math.round(window.innerHeight * 1.8)}`,
-        pin: true,
+        start: "top 82%",
+        end: "top 16%",
         scrub: true,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
@@ -67,7 +66,18 @@ export default function ConstructionCity() {
         },
       });
 
-      return () => trigger.kill();
+      const pinTrigger = ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: () => `+=${Math.round(window.innerHeight * 1.35)}`,
+        pin: true,
+        invalidateOnRefresh: true,
+      });
+
+      return () => {
+        buildTrigger.kill();
+        pinTrigger.kill();
+      };
     });
 
     media.add("(max-width: 899px)", () => {

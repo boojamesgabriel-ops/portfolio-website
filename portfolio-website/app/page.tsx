@@ -3,6 +3,7 @@ import RubiksLoop from "../components/RubiksLoop";
 import ConstructionCity from "@/components/ConstructionCity";
 import ScrollExperience from "@/components/ScrollExperience";
 import AboutSection from "@/components/AboutSection";
+import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
   return (
@@ -61,8 +62,6 @@ export default function Home() {
         </div>
 
         <div className="projects-copy">
-          <span className="projects-index">05. PROJECT ARCHIVE</span>
-
           <h2 id="projects-title" className="projects-title">
             <span className="projects-title-line">
               <span>Projects are</span>
@@ -84,6 +83,7 @@ export default function Home() {
       </section>
 
       <AboutSection />
+      <ContactSection />
     </main>
   );
 }

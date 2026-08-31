@@ -72,14 +72,11 @@ export default function AboutSection() {
           <a href="#contact" className="touch-link">
             Get In Touch
           </a>
-          <button
-            type="button"
+          <div
             className="experiences-achievements-link"
-            aria-label="Experiences and achievements"
           >
-            <span>Experiences &amp;</span>
-            <span>Achievements</span>
-          </button>
+            <span>James Gabriel Boo</span>
+          </div>
         </div>
       </div>
 
