@@ -31,6 +31,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push the `main` branch to [the GitHub repository](https://github.com/boojamesgabriel-ops/portfolio-website).
+2. Open [Vercel](https://vercel.com/new), choose **Import Git Repository**, and select `boojamesgabriel-ops/portfolio-website`.
+3. Keep the detected framework as **Next.js**. The build command is `npm run build` and the output directory should remain empty.
+4. In **Environment Variables**, add the values below for Production, Preview, and Development:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Variable | Purpose |
+| --- | --- |
+| `GITHUB_USERNAME` | The GitHub account shown in the activity panel. |
+| `GITHUB_TOKEN` | A GitHub token with permission to read the contribution calendar. |
+| `GMAIL_USER` | The Gmail address that sends contact-form messages. |
+| `GMAIL_APP_PASSWORD` | A Gmail App Password, not the normal Gmail password. |
+| `CONTACT_RECEIVER_EMAIL` | The inbox that receives messages from the portfolio form. |
+
+5. Click **Deploy**. Future pushes to `main` will create production deployments automatically.
+
+Use [`.env.example`](.env.example) as the variable-name reference. Keep real values in Vercel and in the untracked local `.env` file; never commit them.
+
+The contact form runs in the Node.js runtime and uses Gmail SMTP. Before deployment, create a Gmail App Password with two-step verification enabled for the sending account.
