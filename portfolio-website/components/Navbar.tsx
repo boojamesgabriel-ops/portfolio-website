@@ -11,38 +11,42 @@ export default function Navbar() {
   return (
     <>
       <header className="blueprint-nav">
-        <Link 
-          href="/"
-          className="J-nav__name"
-          aria-label="Go to home"
-        >
-          JG
-        </Link>
+        <div className="nav-brand">
+          <Link
+            href="/"
+            className="J-nav__name"
+            aria-label="Go to home"
+          >
+            JG
+          </Link>
 
-        <Link
-          href="/"
-          className="blueprint-nav__name"
-          aria-label="Go to home"
-        >
-          <span className="B-nav">I3</span>
-          <span>oo</span>
-        </Link>
-
-        <nav
-          className="blueprint-nav__menu"
-          aria-label="Primary navigation"
-        >
-          {navItems.map((item) => (
+          <div className="nav-bar-menu">
             <Link
-              key={item.href}
-              href={item.href}
-              className="blueprint-nav__link"
+              href="/"
+              className="blueprint-nav__name"
+              aria-label="Go to home"
             >
-              {item.label}
+              <span className="B-nav">I3</span>
+              <span>oo</span>
             </Link>
-          ))}
-        </nav>
 
+            <nav
+              className="blueprint-nav__menu"
+              aria-label="Primary navigation"
+            >
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="blueprint-nav__link"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </div>
+        {/*
         <button
           type="button"
           className="am-pm-button"
@@ -51,6 +55,7 @@ export default function Navbar() {
           <span className="am-pm-default">PM</span>
           <span className="am-pm-hover">AM</span>
         </button>
+        */}
       </header>
     </>
   );

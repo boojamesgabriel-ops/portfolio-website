@@ -789,12 +789,18 @@ body {
 .blueprint-nav {
   position: fixed;
   top: 0;
-  left: calc(var(--grid-size) * 2);
+  left: var(--grid-size);
   z-index: 50;
   display: flex;
   align-items: center;
-  gap: 0;
   font-family: var(--font-geist-mono), "Courier New", monospace;
+}
+
+.nav-bar-menu,
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0;
 }
 
 .am-pm-button {
@@ -803,7 +809,8 @@ body {
   width: var(--grid-size);
   height: var(--grid-size);
   position: fixed;
-  right: var(--nav-edge-offset);
+  top: 0;
+  right: var(--grid-size);
   cursor: pointer;
   border: 1px solid #4b4a4a;
   background: transparent;
@@ -836,8 +843,7 @@ body {
   place-items: center;
   width: var(--grid-size);
   height: var(--grid-size);
-  position: fixed;
-  left: var(--grid-size);
+  position: static;
   display: grid;
   cursor: pointer;
   border: 1px solid #4b4a4a;
@@ -893,8 +899,8 @@ body {
     border-color 200ms ease;
 }
 
-.blueprint-nav:hover .blueprint-nav__menu,
-.blueprint-nav:focus-within .blueprint-nav__menu {
+.nav-bar-menu:hover .blueprint-nav__menu,
+.nav-bar-menu:focus-within .blueprint-nav__menu {
   max-width: 860px;
   transform: translateX(0);
   border-color: rgba(255, 255, 255, 0.2);
@@ -927,27 +933,43 @@ body {
   outline: none;
 }
 
+@media (max-width: 1155px) {
+  .am-pm-button {
+    right: calc(var(--grid-size) * 2);
+  }
+}
 
-@media (max-width: 1199px) {
+@media (max-width: 1050px) {
+  .am-pm-button {
+    right: calc(var(--grid-size) * 3);
+  }
+}
+
+@media (max-width: 960px) {
   .blueprint-nav {
-    top: 12px;
     left: 50%;
     right: auto;
     gap: 0;
     transform: translateX(-50%);
   }
 
-  .J-nav__name,
+  .J-nav__name {
+    position: static;
+    width: var(--grid-size);
+    height: var(--grid-size);
+    font-size: 14px;
+  }
+
   .am-pm-button {
     position: static;
-    width: 48px;
-    height: 48px;
+    width: var(--grid-size);
+    height: var(--grid-size);
     font-size: 14px;
   }
 
   .blueprint-nav__name {
-    width: 112px;
-    height: 48px;
+    width: calc(var(--grid-size) * 2);
+    height: var(--grid-size);
     font-size: 18px;
   }
 
@@ -1268,7 +1290,7 @@ body:has(.cube-render-page) {
 }
 
 /* large desktop */
-@media (min-width: 1200px) {
+@media (min-width: 1155px) {
   .hero-layout {
     grid-template-columns:
       minmax(0, 1fr)
