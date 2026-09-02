@@ -1173,6 +1173,10 @@ body:has(.cube-render-page) {
     padding: 48px 16px 28px;
   }
 
+  .blueprint-nav__menu {
+    display: none;
+  }
+
   .hero-statement {
     visibility: visible;
     gap: 3px;
