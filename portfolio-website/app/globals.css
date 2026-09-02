@@ -961,7 +961,7 @@ body {
   }
 
   .am-pm-button {
-    position: static;
+    position: fixed;
     width: var(--grid-size);
     height: var(--grid-size);
     font-size: 14px;
@@ -974,7 +974,8 @@ body {
   }
 
   .blueprint-nav__menu {
-    display: none;
+    display: visible;
+    transition: 0.96s;
   }
 }
 
@@ -1286,6 +1287,24 @@ body:has(.cube-render-page) {
   .rubiks-shell::after {
     width: 110px;
     height: 110px;
+  }
+}
+
+@media (min-width: 875px) and (max-width: 960px) {
+  .hero-meta {
+    font-size: 14px;
+  }
+
+  .hero-statement {
+    font-size: 40px;
+  }
+
+  .hero-detail {
+    font-size: 14px;
+  }
+
+  .rubiks-loop-position {
+    max-width: 310px;
   }
 }
 
@@ -1840,6 +1859,24 @@ body:has(.cube-render-page) {
 
   .about-tools-track {
     animation: none;
+  }
+}
+
+@media (min-width: 961px) and (max-width: 1154px) {
+  .hero-meta {
+    font-size: 14px;
+  }
+
+  .hero-statement {
+    font-size: 40px;
+  }
+
+  .hero-detail {
+    font-size: 14px;
+  }
+
+  .rubiks-loop-position {
+    max-width: 350px;
   }
 }
 
