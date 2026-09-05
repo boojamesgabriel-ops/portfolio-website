@@ -1132,17 +1132,28 @@ body {
 
 .rubiks-shell {
   --rubiks-cube-size: min(72cqw, 86cqh);
-  position: fixed;
+  --rubiks-corner-size: calc(var(--grid-size) * 0.75);
+  --rubiks-corner-color: rgba(255, 255, 255, 0.38);
+  position: relative;
   width: 100%;
   height: 100%;
   aspect-ratio: 6 / 5;
   padding: 0;
   container-type: size;
+  background:
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) left top / var(--rubiks-corner-size) var(--line-thin) no-repeat,
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) left top / var(--line-thin) var(--rubiks-corner-size) no-repeat,
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) right top / var(--rubiks-corner-size) var(--line-thin) no-repeat,
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) right top / var(--line-thin) var(--rubiks-corner-size) no-repeat,
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) left bottom / var(--rubiks-corner-size) var(--line-thin) no-repeat,
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) left bottom / var(--line-thin) var(--rubiks-corner-size) no-repeat,
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) right bottom / var(--rubiks-corner-size) var(--line-thin) no-repeat,
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) right bottom / var(--line-thin) var(--rubiks-corner-size) no-repeat;
   transform-origin: center center;
 }
 
 .rubiks-frame {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   width: var(--rubiks-cube-size);

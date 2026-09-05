@@ -7,7 +7,11 @@ const navItems = [
   { label: "contact", href: "#contact" },
 ];
 
-export default function Navbar() {
+type NavbarProps = {
+  className?: string;
+};
+
+export default function Navbar({ className }: NavbarProps) {
   return (
     <>
       <header className="blueprint-nav">

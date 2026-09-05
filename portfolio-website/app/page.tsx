@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className="blueprint-background relative min-h-svh overflow-x-clip">
       <ScrollExperience />
-      <Navbar />
+      <Navbar className="Navbar"/>
 
       <section className="hero-layout">
         <div className="hero-column hero-column--left">
@@ -49,6 +49,10 @@ export default function Home() {
             <span><b>04.</b> FRONTEND AI ENGINEER INTERN</span>
           </div>
         </div>
+      </section>
+
+      <section className="hero-projects-transition">
+
       </section>
 
       <section

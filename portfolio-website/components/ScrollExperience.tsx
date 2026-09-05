@@ -79,7 +79,7 @@ export default function ScrollExperience() {
               start: "top top",
               end: "+=70%",
               pin: true,
-              scrub: 0.8,
+              scrub: 1.2,
             },
           });
 
@@ -87,22 +87,26 @@ export default function ScrollExperience() {
             .to(
               ".rubiks-loop-position",
               {
-                yPercent: -28,
-                scale: 0.72,
-                opacity: 0.28,
-                ease: "none",
+                scale: 0.2,
+                opacity: 0,
+                ease: "slow(0.7, 0.7, false)",
               },
-              0,
+              0.07,
             )
             .to(
               ".hero-column--left",
-              { xPercent: -10, opacity: 0.2, ease: "none" },
-              0,
+              { xPercent: -50, opacity: 0, ease: "slow(0.7, 0.7, false)" },
+              0.05,
             )
             .to(
               ".hero-column--right",
-              { xPercent: 10, opacity: 0.2, ease: "none" },
-              0,
+              { xPercent: 50, opacity: 0, ease: "slow(0.7, 0.7, false)" },
+              0.05,
+            )
+            .to(
+              ".blueprint-nav",
+              { yPercent: -50, opacity: 0, ease: "slow(0.7, 0.7, false)" },
+              0.05,
             );
         },
       );
