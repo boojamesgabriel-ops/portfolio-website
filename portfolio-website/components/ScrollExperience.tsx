@@ -50,10 +50,10 @@ export default function ScrollExperience() {
         start: "top center",
         end: "bottom center",
         onEnter: () => {
-          sectionLabel.textContent = "PROJECT ARCHIVE";
+          sectionLabel.textContent = "PROJECTS";
         },
         onEnterBack: () => {
-          sectionLabel.textContent = "PROJECT ARCHIVE";
+          sectionLabel.textContent = "PROJECTS";
         },
         onLeaveBack: () => {
           sectionLabel.textContent = "HOME";
