@@ -77,36 +77,50 @@ export default function ScrollExperience() {
             scrollTrigger: {
               trigger: ".hero-layout",
               start: "top top",
-              end: "+=70%",
+              end: "+=150%",
               pin: true,
-              scrub: 1.2,
+              scrub: true,
             },
           });
 
           heroTimeline
             .to(
-              ".rubiks-loop-position",
+              ".rubiks-frame",
               {
-                scale: 0.2,
-                opacity: 0,
+                yPercent: 50,
+                opacity: 1,
                 ease: "slow(0.7, 0.7, false)",
               },
-              0.07,
+              0.6,
+            )
+            .to(
+              ".rubiks-loop-position",
+              {
+                yPercent: -50,
+                opacity: 1,
+                ease: "slow(0.7, 0.7, false)",
+              },
+              0.6,
             )
             .to(
               ".hero-column--left",
-              { xPercent: -50, opacity: 0, ease: "slow(0.7, 0.7, false)" },
-              0.05,
+              { yPercent: -20, opacity: 0, ease: "slow(0.7, 0.7, false)" },
+              0.2,
             )
             .to(
               ".hero-column--right",
-              { xPercent: 50, opacity: 0, ease: "slow(0.7, 0.7, false)" },
-              0.05,
+              { yPercent: -20, opacity: 0, ease: "slow(0.7, 0.7, false)" },
+              0.2,
             )
             .to(
               ".blueprint-nav",
-              { yPercent: -50, opacity: 0, ease: "slow(0.7, 0.7, false)" },
-              0.05,
+              { yPercent: -20, opacity: 0, ease: "none" },
+              0.01,
+            )
+            .to(".rubiks-shell", {
+              "--rubiks-edge-size": "100%",
+              ease: "none", }, 
+              0.08,
             );
         },
       );

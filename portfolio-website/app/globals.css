@@ -1117,6 +1117,7 @@ body {
 
 .rubiks-loop-position {
   position: relative;
+  overflow: hidden;
   z-index: 10;
   display: flex;
   width: calc(var(--grid-size) * 6);
@@ -1134,12 +1135,14 @@ body {
   --rubiks-cube-size: min(72cqw, 86cqh);
   --rubiks-corner-size: calc(var(--grid-size) * 0.75);
   --rubiks-corner-color: rgba(255, 255, 255, 0.38);
+  --rubiks-edge-size: 0%;
   position: relative;
   width: 100%;
   height: 100%;
   aspect-ratio: 6 / 5;
   padding: 0;
   container-type: size;
+  overflow: hidden;
   background:
     linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) left top / var(--rubiks-corner-size) var(--line-thin) no-repeat,
     linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) left top / var(--line-thin) var(--rubiks-corner-size) no-repeat,
@@ -1148,7 +1151,13 @@ body {
     linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) left bottom / var(--rubiks-corner-size) var(--line-thin) no-repeat,
     linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) left bottom / var(--line-thin) var(--rubiks-corner-size) no-repeat,
     linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) right bottom / var(--rubiks-corner-size) var(--line-thin) no-repeat,
-    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) right bottom / var(--line-thin) var(--rubiks-corner-size) no-repeat;
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) right bottom / var(--line-thin) var(--rubiks-corner-size) no-repeat,
+
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) top / var(--rubiks-edge-size) var(--line-thin) no-repeat,
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) bottom / var(--rubiks-edge-size) var(--line-thin) no-repeat,
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) left / var(--line-thin) var(--rubiks-edge-size) no-repeat,
+    linear-gradient(var(--rubiks-corner-color), var(--rubiks-corner-color)) right / var(--line-thin) var(--rubiks-edge-size) no-repeat;
+    
   transform-origin: center center;
 }
 
