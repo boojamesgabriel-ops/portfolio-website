@@ -7,7 +7,7 @@ import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
   return (
-    <main className="blueprint-background relative min-h-svh overflow-x-hidden">
+    <main className="blueprint-background relative min-h-svh overflow-x-clip">
       <ScrollExperience />
       <Navbar />
 

@@ -30,7 +30,15 @@ export default function ScrollExperience() {
       }, 260);
     };
 
+    const refreshWhenVisible = () => {
+      if (document.visibilityState === "visible") {
+        refreshScrollMeasurements();
+      }
+    };
+
     window.addEventListener("resize", refreshScrollMeasurements);
+    window.addEventListener("orientationchange", refreshScrollMeasurements);
+    document.addEventListener("visibilitychange", refreshWhenVisible);
 
     const context = gsap.context(() => {
       gsap.set(progress, { scaleX: 0, transformOrigin: "left center" });
@@ -63,7 +71,7 @@ export default function ScrollExperience() {
       const motion = gsap.matchMedia();
 
       motion.add(
-        "(min-width: 900px) and (prefers-reduced-motion: no-preference)",
+        "(min-width: 1440px) and (min-height: 648px) and (prefers-reduced-motion: no-preference)",
         () => {
           const heroTimeline = gsap.timeline({
             scrollTrigger: {
@@ -159,6 +167,8 @@ export default function ScrollExperience() {
 
     return () => {
       window.removeEventListener("resize", refreshScrollMeasurements);
+      window.removeEventListener("orientationchange", refreshScrollMeasurements);
+      document.removeEventListener("visibilitychange", refreshWhenVisible);
 
       if (refreshTimer !== undefined) {
         window.clearTimeout(refreshTimer);
