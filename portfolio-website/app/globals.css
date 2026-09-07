@@ -1939,12 +1939,12 @@ body:has(.cube-render-page) {
 
   width: min(100%, var(--grid-max-width));
   min-height: clamp(
-    calc(var(--grid-size) * 2),
+    calc(var(--grid-size) * 3),
     28svh,
-    calc(var(--grid-size) * 5)
+    calc(var(--grid-size) * 8)
   );
 
-  padding-block: calc(var(--grid-size) * 0.5);
+  padding-block: calc(var(--grid-size) * 0.01);
 
   margin-inline: auto;
   overflow: hidden;

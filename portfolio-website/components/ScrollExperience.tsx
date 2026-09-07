@@ -77,12 +77,25 @@ export default function ScrollExperience() {
             scrollTrigger: {
               trigger: ".hero-layout",
               start: "top top",
-              end: "+=110%",
+              end: "+=50%",
               pin: true,
               scrub: 1,
               anticipatePin: 1,
               invalidateOnRefresh: true,
-              markers: true,
+            },
+          });
+          
+          //Unfinished work for the transition
+          const transitionTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: ".hero-projects-transition",
+              start: "top top",
+              end: "+=100%",
+              pin: true,
+              pinSpacing: true,
+              scrub: 1,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
             },
           });
 
