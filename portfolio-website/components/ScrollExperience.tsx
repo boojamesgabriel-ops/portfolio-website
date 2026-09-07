@@ -77,11 +77,12 @@ export default function ScrollExperience() {
             scrollTrigger: {
               trigger: ".hero-layout",
               start: "top top",
-              end: "+=90%",
+              end: "+=110%",
               pin: true,
               scrub: 1,
               anticipatePin: 1,
               invalidateOnRefresh: true,
+              markers: true,
             },
           });
 

@@ -9,7 +9,7 @@
   --grid-section-columns: var(--grid-columns);
   --grid-max-width: 100vw;
   --grid-x-offset: 0px;
-  --grid-viewport-height: 100svh;
+  --grid-viewport-height: 60svh;
   --header-height: var(--grid-block-size);
   --grid-size: var(--grid-block-size);
   --grid-line: rgba(255, 255, 255, 0.055);
