@@ -749,16 +749,17 @@ body {
 }
 
 .blueprint-background {
-  position: relative;
-  overflow-x: hidden;
   background:
     linear-gradient(var(--grid-line) var(--line-thin), transparent var(--line-thin)),
     linear-gradient(90deg, var(--grid-line) var(--line-thin), transparent var(--line-thin)),
     var(--background);
+
   background-size:
     var(--grid-size) var(--grid-size),
     var(--grid-size) var(--grid-size),
     auto;
+
+  background-attachment: fixed, fixed, fixed;
 }
 
 .scroll-ruler {
@@ -1135,7 +1136,8 @@ body {
   --rubiks-cube-size: min(72cqw, 86cqh);
   --rubiks-corner-size: calc(var(--grid-size) * 0.75);
   --rubiks-corner-color: rgba(255, 255, 255, 0.38);
-  --rubiks-edge-size: 0%;
+  --rubiks-edge-progress: 0;
+  --rubiks-edge-size: calc(var(--rubiks-edge-progress) * 100%);
   position: relative;
   width: 100%;
   height: 100%;
@@ -1923,6 +1925,63 @@ body:has(.cube-render-page) {
     height: calc(var(--grid-size) * 5);
     max-width: calc(100vw - var(--grid-size));
   }
+}
+
+.hero-projects-transition {
+  position: relative;
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+
+  align-items: center;
+  justify-items: center;
+
+  width: min(100%, var(--grid-max-width));
+  min-height: clamp(
+    calc(var(--grid-size) * 2),
+    28svh,
+    calc(var(--grid-size) * 5)
+  );
+
+  padding-block: calc(var(--grid-size) * 0.5);
+
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+.home-block,
+.projects-block {
+  display: grid;
+  place-items: center;
+}
+
+.line-block {
+  width: var(--line-thin);
+  height: 100%;
+  min-height: var(--grid-size);
+
+  background: rgba(213, 220, 223, 0.42);
+  transform-origin: top center;
+
+}
+
+.outer-block {
+  display: grid;
+  place-items: center;
+
+  width: calc(var(--grid-size) * 0.3);
+  aspect-ratio: 1;
+
+  border: var(--line-thin) solid rgba(213, 220, 223, 0.42);
+}
+
+.inner-block {
+  width: 42%;
+  aspect-ratio: 1;
+
+  border: var(--line-thin) solid rgba(213, 220, 223, 0.28);
+  background: white;
 }
 
 @theme inline {

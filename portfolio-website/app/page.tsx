@@ -52,9 +52,19 @@ export default function Home() {
       </section>
 
       <section className="hero-projects-transition">
-        <div className="home-block" />
+        <div className="home-block">
+          <div className="outer-block">
+            <div className="inner-block" />
+          </div>
+        </div>
+
         <div className="line-block" />
-        <div className="projects-block" />
+        
+        <div className="projects-block">
+          <div className="outer-block">
+            <div className="inner-block" />
+          </div>
+        </div>
       </section>
 
       <section

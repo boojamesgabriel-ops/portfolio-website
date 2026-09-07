@@ -77,9 +77,11 @@ export default function ScrollExperience() {
             scrollTrigger: {
               trigger: ".hero-layout",
               start: "top top",
-              end: "+=150%",
+              end: "+=90%",
               pin: true,
-              scrub: true,
+              scrub: 1,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
             },
           });
 
@@ -104,12 +106,12 @@ export default function ScrollExperience() {
             )
             .to(
               ".hero-column--left",
-              { yPercent: -20, opacity: 0, ease: "slow(0.7, 0.7, false)" },
+              { xPercent: -20, opacity: 0, ease: "slow(0.7, 0.7, false)" },
               0.2,
             )
             .to(
               ".hero-column--right",
-              { yPercent: -20, opacity: 0, ease: "slow(0.7, 0.7, false)" },
+              { xPercent: 20, opacity: 0, ease: "slow(0.7, 0.7, false)" },
               0.2,
             )
             .to(
