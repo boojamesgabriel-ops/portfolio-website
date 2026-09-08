@@ -73,71 +73,78 @@ export default function ScrollExperience() {
       motion.add(
         "(min-width: 1440px) and (min-height: 648px) and (prefers-reduced-motion: no-preference)",
         () => {
-          const heroTimeline = gsap.timeline({
+          const connectionTimeline = gsap.timeline({
             scrollTrigger: {
-              trigger: ".hero-layout",
+              trigger: ".hero-transition-stage",
               start: "top top",
-              end: "+=50%",
-              pin: true,
-              scrub: 1,
-              anticipatePin: 1,
-              invalidateOnRefresh: true,
-            },
-          });
-          
-          //Unfinished work for the transition
-          const transitionTimeline = gsap.timeline({
-            scrollTrigger: {
-              trigger: ".hero-projects-transition",
-              start: "top top",
-              end: "+=100%",
+              end: "+=220%",
               pin: true,
               pinSpacing: true,
-              scrub: 1,
+              scrub: 1.2,
               anticipatePin: 1,
               invalidateOnRefresh: true,
             },
           });
 
-          heroTimeline
-            .to(
-              ".rubiks-frame",
-              {
-                yPercent: 50,
-                opacity: 1,
-                ease: "slow(0.7, 0.7, false)",
-              },
-              0.6,
-            )
-            .to(
-              ".rubiks-loop-position",
-              {
-                yPercent: -50,
-                opacity: 1,
-                ease: "slow(0.7, 0.7, false)",
-              },
-              0.6,
-            )
-            .to(
-              ".hero-column--left",
-              { xPercent: -20, opacity: 0, ease: "slow(0.7, 0.7, false)" },
-              0.2,
-            )
-            .to(
-              ".hero-column--right",
-              { xPercent: 20, opacity: 0, ease: "slow(0.7, 0.7, false)" },
-              0.2,
-            )
-            .to(
-              ".blueprint-nav",
-              { yPercent: -20, opacity: 0, ease: "none" },
-              0.01,
-            )
-            .to(".rubiks-shell", {
-              "--rubiks-edge-size": "100%",
-              ease: "none", }, 
-              0.08,
-            );
+          connectionTimeline
+            .to( ".rubiks-shell", {
+              "--rubiks-edge-progress": 1,
+              duration: 0.55,
+              ease: "none",
+            }, 0)
+            .to(".blueprint-nav", {
+              yPercent: -20,
+              opacity: 0,
+              duration: 0.45,
+              ease: "none",
+            }, 0.1)
+            .to(".hero-column--left", {
+              xPercent: -20,
+              opacity: 0,
+              duration: 0.65,
+              ease: "none",
+            }, 0.2)
+            .to(".hero-column--right", {
+              xPercent: 20,
+              opacity: 0,
+              duration: 0.65,
+              ease: "none",
+            }, 0.2)
+            .to(".rubiks-frame", {
+              yPercent: 50,
+              duration: 0.65,
+              ease: "none",
+            }, 0.55)
+            .to(".rubiks-loop-position", {
+              yPercent: -50,
+              duration: 0.65,
+              ease: "none",
+            }, 0.55)
+            .fromTo(".home-block", {
+              autoAlpha: 0,
+              scale: 0.72,
+            }, {
+              autoAlpha: 1,
+              scale: 1,
+              duration: 0.28,
+              ease: "none",
+            }, 1.15)
+            .fromTo(".line-block", {
+              scaleY: 0,
+            }, {
+              scaleY: 1,
+              duration: 0.75,
+              transformOrigin: "top center",
+              ease: "none",
+            }, 1.35)
+            .fromTo(".projects-block", {
+              autoAlpha: 0,
+              scale: 0.72,
+            }, {
+              autoAlpha: 1,
+              duration: 0.3,
+              ease: "none",
+            }, 2.05);
         },
       );
 
@@ -151,6 +158,7 @@ export default function ScrollExperience() {
               scrub: 0.5,
             },
           })
+
           .fromTo(
             ".projects-entry-signal__line",
             { scaleY: 0 },
@@ -194,6 +202,7 @@ export default function ScrollExperience() {
             },
           },
         );
+
       });
 
       return () => motion.revert();

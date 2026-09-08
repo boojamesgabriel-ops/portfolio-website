@@ -9,7 +9,7 @@
   --grid-section-columns: var(--grid-columns);
   --grid-max-width: 100vw;
   --grid-x-offset: 0px;
-  --grid-viewport-height: 60svh;
+  --grid-viewport-height: 100svh;
   --header-height: var(--grid-block-size);
   --grid-size: var(--grid-block-size);
   --grid-line: rgba(255, 255, 255, 0.055);
@@ -1040,6 +1040,10 @@ body {
   padding: calc(var(--grid-size) * 1.35) calc(var(--grid-size) * 0.2) calc(var(--grid-size) * 0.35);
 }
 
+.hero-transition-stage {
+  position: relative;
+}
+
 .hero-column {
   display: grid;
   min-width: 0;
@@ -1950,10 +1954,42 @@ body:has(.cube-render-page) {
   overflow: hidden;
 }
 
-.home-block,
-.projects-block {
+.home-block {
   display: grid;
   place-items: center;
+  align-self: end;
+}
+
+.home-block,
+.projects-block {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.line-block {
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.projects-block {
+  display: flex;
+  align-items: center;
+  align-self: start;
+  gap: calc(var(--grid-size) * 0.15);
+}
+
+.projects-block {
+  display: flex;
+  align-items: center;
+  align-items: start;
+  gap: calc(var(--grid-size) * 0.2);
+}
+
+.projects-block__label {
+  color: rgba(123, 220, 223, 0.5);
+  font: var(--font-geist-mono), "Courier New", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0;
 }
 
 .line-block {
@@ -1982,6 +2018,38 @@ body:has(.cube-render-page) {
 
   border: var(--line-thin) solid rgba(213, 220, 223, 0.28);
   background: white;
+}
+
+@media
+  (min-width: 1440px)
+  and (min-height: 648px)
+  and (prefers-reduced-motion: no-preference) {
+  .hero-transition-stage {
+    position: relative;
+    width: min(100%, var(--grid-max-width));
+    height: var(--grid-viewport-height);
+    margin-inline: auto;
+    overflow: clip;
+  }
+
+  .hero-transition-stage > .hero-layout,
+  .hero-transition-stage > .hero-projects-transition {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+  }
+
+  .hero-layout {
+    z-index: 1;
+  }
+
+  .hero-projects-transition {
+    z-index: 2;
+    grid-template-rows: 42% 32% 26%;
+    pointer-events: none;
+  }
 }
 
 @theme inline {
