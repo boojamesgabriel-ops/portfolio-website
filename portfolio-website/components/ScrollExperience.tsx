@@ -86,65 +86,66 @@ export default function ScrollExperience() {
             },
           });
 
-          connectionTimeline
-            .to( ".rubiks-shell", {
-              "--rubiks-edge-progress": 1,
-              duration: 0.55,
-              ease: "none",
-            }, 0)
-            .to(".blueprint-nav", {
-              yPercent: -20,
-              opacity: 0,
-              duration: 0.45,
-              ease: "none",
-            }, 0.1)
-            .to(".hero-column--left", {
-              xPercent: -20,
-              opacity: 0,
-              duration: 0.65,
-              ease: "none",
-            }, 0.2)
-            .to(".hero-column--right", {
-              xPercent: 20,
-              opacity: 0,
-              duration: 0.65,
-              ease: "none",
-            }, 0.2)
-            .to(".rubiks-frame", {
-              yPercent: 50,
-              duration: 0.65,
-              ease: "none",
-            }, 0.55)
-            .to(".rubiks-loop-position", {
-              yPercent: -50,
-              duration: 0.65,
-              ease: "none",
-            }, 0.55)
-            .fromTo(".home-block", {
+            gsap.set([".home-block", ".projects-block"], {
               autoAlpha: 0,
               scale: 0.72,
-            }, {
-              autoAlpha: 1,
-              scale: 1,
-              duration: 0.28,
-              ease: "none",
-            }, 1.15)
-            .fromTo(".line-block", {
+            });
+
+            gsap.set(".line-block", {
               scaleY: 0,
-            }, {
-              scaleY: 1,
-              duration: 0.75,
               transformOrigin: "top center",
-              ease: "none",
-            }, 1.35)
-            .fromTo(".projects-block", {
-              autoAlpha: 0,
-              scale: 0.72,
-            }, {
-              autoAlpha: 1,
-              duration: 0.3,
-              ease: "none",
-            }, 2.05);
+            });
+
+            connectionTimeline
+              .to(".rubiks-shell", {
+                "--rubiks-edge-progress": 1,
+                duration: 0.55,
+                ease: "none",
+              })
+
+              .to(".blueprint-nav", {
+                yPercent: -20,
+                autoAlpha: 0,
+                duration: 0.45,
+                ease: "none",
+              })
+
+              .to([".hero-column--left", ".hero-column--right"], {
+                yPercent: -20,
+                autoAlpha: 0,
+                duration: 0.65,
+                ease: "none",
+              })
+
+              .to(".rubiks-frame", {
+                yPercent: 160,
+                autoAlpha: 0,
+                duration: 8,
+                ease: "none",
+              })
+
+              .to(".home-block", {
+                autoAlpha: 1,
+                scale: 1,
+                duration: 0.3,
+                ease: "none",
+              })
+
+               .to(".line-block", {
+                scaleY: 1,
+                duration: 0.8,
+                transformOrigin: "top center",
+                ease: "none",
+               })
+
+               .to(".projects-block", {
+                autoAlpha: 1,
+                scale: 1,
+                duration: 0.3,
+                ease: "none",
+               });
+
+
         },
       );
 
